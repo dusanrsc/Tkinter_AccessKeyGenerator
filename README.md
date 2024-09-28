@@ -1,4 +1,4 @@
-﻿# Tkinter_AccessKeyGenerator just for funn!
+﻿# Tkinter_AccessKeyGenerator just for fun!
  
 # Screenshots:
 ![screenshot1](https://github.com/user-attachments/assets/8fdd41ee-c0d3-489d-b566-614a88b5b236)
