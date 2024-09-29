@@ -19,37 +19,9 @@ os.system("cls")
 pygame.mixer.music.load("assets/audio/theme.mp3")
 pygame.mixer.music.play()
 
-# functions section
-# generate key section
-def generate_key():
+# variable section
+is_music_playing = True
 
-	# clearing entry input fields from previous keys
-	key_input_1.delete(0, END)
-	key_input_2.delete(0, END)
-	key_input_3.delete(0, END)
-	key_input_4.delete(0, END)
-	key_input_5.delete(0, END)
-
-	# generating new index number to assign it with key list content
-	random_keys = random.randint(0, len(keys)-1)
-
-	# displaying new key in entry input fiels
-	key_input_1.insert(1, keys[random_keys][:5].upper())
-	key_input_2.insert(1, keys[random_keys][6:11].upper())
-	key_input_3.insert(1, keys[random_keys][12:17].upper())
-	key_input_4.insert(1, keys[random_keys][18:23].upper())
-	key_input_5.insert(1, keys[random_keys][24:29].upper())
-
-# copy key function
-def copy_key():
-
-	# clearing previous clipboard
-	root.clipboard_clear()
-
-	# adding keys segment-by-segment to clipboard
-	root.clipboard_append(f"{key_input_1.get()}-{key_input_2.get()}-{key_input_3.get()}-{key_input_4.get()}-{key_input_5.get()}")
-
-# variables section
 # specific/thunder variable (metadata)
 __version__ = "v1.0.0"
 __updated__ = "29.09.2024"
@@ -84,6 +56,53 @@ KEY_INPUT_TEXT_COLOR = "#4D4D4D"
 
 # lists section
 keys = ["PTMGF-28VKB-2W934-482QH-98623", "DXR32-X44M7-CYTCX-P6H6P-97CPG"]
+
+# functions section
+# generate key section
+def generate_key():
+
+	# clearing entry input fields from previous keys
+	key_input_1.delete(0, END)
+	key_input_2.delete(0, END)
+	key_input_3.delete(0, END)
+	key_input_4.delete(0, END)
+	key_input_5.delete(0, END)
+
+	# generating new index number to assign it with key list content
+	random_keys = random.randint(0, len(keys)-1)
+
+	# displaying new key in entry input fiels
+	key_input_1.insert(1, keys[random_keys][:5].upper())
+	key_input_2.insert(1, keys[random_keys][6:11].upper())
+	key_input_3.insert(1, keys[random_keys][12:17].upper())
+	key_input_4.insert(1, keys[random_keys][18:23].upper())
+	key_input_5.insert(1, keys[random_keys][24:29].upper())
+
+# copy key function
+def copy_key():
+
+	# clearing previous clipboard
+	root.clipboard_clear()
+
+	# adding keys segment-by-segment to clipboard
+	root.clipboard_append(f"{key_input_1.get()}-{key_input_2.get()}-{key_input_3.get()}-{key_input_4.get()}-{key_input_5.get()}")
+
+# play or pause music function
+def play_or_pause_music():
+
+	# setting up global variable
+	global is_music_playing
+
+	# condition for music play/pause controlling
+	if is_music_playing:
+		is_music_playing = False
+		play_or_pause_music_button.config(text=" ■ ")
+		pygame.mixer.music.stop()
+
+	else:
+		is_music_playing = True
+		play_or_pause_music_button.config(text=" ♫ ")
+		pygame.mixer.music.play()
 
 # root window settings section
 root = Tk()
@@ -128,7 +147,11 @@ key_copy_button.place(x=KEY_INPUT_X+(GAP*3)-170, y=KEY_INPUT_Y+40)
 
 # generate key button 
 key_generate_button = ttk.Button(root, text="          GENERATE          ", command=generate_key)
-key_generate_button.place(x=KEY_INPUT_X+(GAP*3)-50, y=KEY_INPUT_Y+40)
+key_generate_button.place(x=KEY_INPUT_X+(GAP*3)-40, y=KEY_INPUT_Y+40)
+
+# play/pause music button
+play_or_pause_music_button = Button(root, text=" ♫ ", font=("Arial", 8), command=play_or_pause_music)
+play_or_pause_music_button.place(x=int(ROOT_WIDTH)-25, y=int(ROOT_HEIGHT)-27)
 
 # starting program (mainloop)
 root.mainloop()
