@@ -51,11 +51,18 @@ WHITE = "#FFFFFF"
 
 ALPHA = GREEN
 
-KEY_INPUT_BACKGROUND_COLOR = WHITE
-KEY_INPUT_TEXT_COLOR = "#4D4D4D"
+KEY_INPUT_BACKGROUND_COLOR = RED
+KEY_INPUT_TEXT_COLOR = WHITE
+BUTTON_BACKGROUND_COLOR = KEY_INPUT_BACKGROUND_COLOR
+BUTTON_TEXT_COLOR = KEY_INPUT_TEXT_COLOR
 
 # lists section
-keys = ["PTMGF-28VKB-2W934-482QH-98623", "DXR32-X44M7-CYTCX-P6H6P-97CPG"]
+keys = [
+	"PTMGF-28VKB-2W934-482QH-98623", 
+	"DXR32-X44M7-CYTCX-P6H6P-97CPG",
+	"KJG93-HDPGB-PXBPP-TFB49-9DBVB",
+	"QRR4P-F4FDP-H986R-RF6P3-7QK3R"
+]
 
 # functions section
 # generate key section
@@ -142,15 +149,15 @@ key_input_5.place(x=KEY_INPUT_X+(GAP*4), y=KEY_INPUT_Y)
 
 # buttons section
 # copy key to clipboard button
-key_copy_button = ttk.Button(root, text="COPY", command=copy_key)
+key_copy_button = Button(root, text="          COPY          ", font=("Arial Bold", 8), bg=BUTTON_BACKGROUND_COLOR, relief=RIDGE, fg=BUTTON_TEXT_COLOR, command=copy_key)
 key_copy_button.place(x=KEY_INPUT_X+(GAP*3)-170, y=KEY_INPUT_Y+40)
 
 # generate key button 
-key_generate_button = ttk.Button(root, text="          GENERATE          ", command=generate_key)
-key_generate_button.place(x=KEY_INPUT_X+(GAP*3)-40, y=KEY_INPUT_Y+40)
+key_generate_button = Button(root, text="          GENERATE          ", font=("Arial Bold", 8), bg=BUTTON_BACKGROUND_COLOR, relief=RIDGE, fg=BUTTON_TEXT_COLOR, command=generate_key)
+key_generate_button.place(x=KEY_INPUT_X+(GAP*3)-35, y=KEY_INPUT_Y+40)
 
 # play/pause music button
-play_or_pause_music_button = Button(root, text=" ♫ ", font=("Arial", 8), command=play_or_pause_music)
+play_or_pause_music_button = Button(root, text=" ♫ ", font=("Arial", 8), bg=BUTTON_BACKGROUND_COLOR, relief=RIDGE, fg=BUTTON_TEXT_COLOR, command=play_or_pause_music)
 play_or_pause_music_button.place(x=int(ROOT_WIDTH)-25, y=int(ROOT_HEIGHT)-27)
 
 # starting program (mainloop)
