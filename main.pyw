@@ -41,7 +41,7 @@ KEY_INPUT_WIDTH = 6
 KEY_INPUT_FONT_SIZE = 13
 GAP = 70
 
-# hexadecimal color tuple CONSTANTS section
+# hexadecimal color CONSTANTS section
 RED = "#FF0000"
 GREEN = "#00FF00"
 BLUE = "#0000FF"
